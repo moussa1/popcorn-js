@@ -258,14 +258,14 @@ clean:
 	@@rm -rf ${DIST_DIR}
 
 # Setup any git submodules we need
-SEQUENCE_SRC = ${PLAYERS_DIR}/sequence/popcorn.sequence.js
+SEQUENCE_SRC = ${MODULES_DIR}/sequence/popcorn.sequence.js
 
-setup: ${SEQUENCE_SRC} update
+setup: ${MODULES_SRC} update
 
 update:
 	@@echo "Updating submodules..."
 	@@git submodule update
-	@@cd  players/sequence; git pull origin master
+	@@cd  modules/sequence; git pull origin master
 
 ${SEQUENCE_SRC}:
 	@@echo "Setting-up submodules..."
