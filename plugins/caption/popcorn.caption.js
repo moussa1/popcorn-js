@@ -122,8 +122,12 @@
 		//newdiv.style.top = "0px";
 		//newdiv.style.left = "0px";
 		
-		newdiv.style.top = this.position().top + "px";
-		newdiv.style.left = "0px";		
+		newdiv.style.top = this.position().top + 1 + "px";
+		newdiv.style.left = this.position().left + 1 + "px";	
+		
+		console.log( "position", this.position());
+		
+		console.log( "newdiv position", newdiv.style.top );
 		
 		//newdiv.style.border = "1px solid #0000ff";
 
