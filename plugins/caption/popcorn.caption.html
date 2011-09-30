@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popcorn Caption Plug-in Demo</title>
+  
+  <script src="../../popcorn.js"></script>
+
+  <script src="popcorn.caption.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var p = Popcorn('#video')
+      .volume(0)
+      .play() 
+      .caption({
+        start: 2, // seconds
+        end: 6, // seconds
+        text: 'this is a caption g money',
+		color: 'red',
+		size: 10,
+		posx: 100,
+		posy: 100,
+      } )
+      .caption({
+        start: 7, // seconds
+        end: 14, // seconds
+        text: 'this is a second caption g money power',
+		color: 'yellow',
+		size: 60,
+		posx: 0,
+		posy: 0,
+      } )
+
+    }, false);
+
+  </script>
+</head>
+<body>
+  <h1 id="qunit-header">Popcorn Caption Plug-in Demo</h1>
+  <p> A subtitle displaying 'this is the first subtitle of 2011' will appear at 5 seconds and disappear at 15 seconds.</p>
+  <p> A subtitle displaying 'this is the second subtitle of 2011' will appear at 20 seconds and disappear at 45 seconds.</p>
+  <div>
+
+    <video id='video' 
+      controls height="480" width="785"
+      poster="../../test/poster.png"> 
+
+      <source id='mp4'
+        src="../../test/trailer.mp4"
+        type='video/mp4; codecs="avc1, mp4a"'> 
+
+      <source id='ogv'
+        src="../../test/trailer.ogv"
+        type='video/ogg; codecs="theora, vorbis"'> 
+
+      <p>Your user agent does not support the HTML5 Video element.</p> 
+
+    </video> 
+  </div>
+
+</body>
+</html>
