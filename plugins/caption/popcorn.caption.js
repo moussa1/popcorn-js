@@ -14,8 +14,8 @@
           // the video element must have height and width defined
           style.width = media.offsetWidth + "px";
 		  
-		  //style.top = position.top + "px";
-          //style.left = position.left + "px";
+		  style.top = position.top + "px";
+          style.left = position.left + "px";
 
           setTimeout( updatePosition, 10 );
         };
@@ -119,18 +119,9 @@
 		newdiv.style.color = options.color;
 		newdiv.style.fontSize = options.size + "px";
 
-		//newdiv.style.top = "0px";
-		//newdiv.style.left = "0px";
-		
-		newdiv.style.top = this.position().top + 1 + "px";
-		newdiv.style.left = this.position().left + 1 + "px";	
-		
-		console.log( "position", this.position());
-		
-		console.log( "newdiv position", newdiv.style.top );
-		
-		//newdiv.style.border = "1px solid #0000ff";
-
+		newdiv.style.top = ( options.posy > this.position().height ) ? this.position().height + "px" : options.posy + "px";
+		newdiv.style.left = ( options.posx > this.position().width ) ? this.position().width + "px" : options.posx + "px";
+				
         // Creates a div for all captions to use
         ( !this.container && ( !options.target || options.target === "caption-container" ) ) && 
           createDefaultContainer( this );
