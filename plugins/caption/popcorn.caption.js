@@ -22,9 +22,6 @@
 
         ctxContainer.id = Popcorn.guid();
         style.position = "absolute";
-        style.textShadow = "black 2px 2px 6px";
-        style.fontWeight = "bold";
-        //style.textAlign = "center";
 
         updatePosition();
 
@@ -32,7 +29,7 @@
       };
 
   /**
-   * Caption popcorn plug-in 
+   * Caption popcorn plug-in
    * Displays a caption over the video, or in the target div
    * Options parameter will need a start, end, posx, posy.
    * Optional parameters are target, text, color and size.
@@ -48,14 +45,16 @@
    * Example:
      var p = Popcorn('#video')
         .caption({
-          start:            5,                 // seconds, mandatory
-          end:              15,                // seconds, mandatory
-		  color:           'red',		       // optional
-		  size:            '20',		       // pixels, optional
-		  posx:			   '0', 			   // pixels, left
-		  posy:			   '0',				   // pixels, top
-          text:             'Hellow world',    // optional
-          target:           'captiondiv',     // optional
+          start:        5,                   // seconds, mandatory
+          end:          15,                  // seconds, mandatory
+		  color:        'red',		         // optional
+		  size:         '20',		         // pixels, optional
+		  posx:			'0', 			     // pixels, left
+		  posy:			'0',				 // pixels, top
+		  shadow:		'black 2px 2px 6px', // optional
+		  weight:		'bold',				 // optional
+          text:         'Hellow world',      // optional
+          target:       'captiondiv',        // optional
         } )
    *
    */
@@ -71,46 +70,56 @@
         },
         options: {
           start: {
-            elem: "input", 
-            type: "text", 
+            elem: "input",
+            type: "text",
             label: "In"
           },
           end: {
-            elem: "input", 
-            type: "text", 
+            elem: "input",
+            type: "text",
             label: "Out"
           },
           target: "caption-container",
           text: {
-            elem: "input", 
-            type: "text", 
+            elem: "input",
+            type: "text",
             label: "Text"
           },
 		  color: {
-            elem: "input", 
-            type: "text", 
+            elem: "input",
+            type: "text",
             label: "Color"
           },
 		  size: {
-            elem: "input", 
-            type: "text", 
+            elem: "input",
+            type: "text",
             label: "FontSize"
           },
 		  posx: {
-            elem: "input", 
-            type: "text", 
+            elem: "input",
+            type: "text",
             label: "PositionX"
           },
 		  posy: {
-            elem: "input", 
-            type: "text", 
+            elem: "input",
+            type: "text",
             label: "PositionY"
+          },
+     	  weight: {
+            elem: "input",
+            type: "text",
+            label: "FontWeight"
+          },
+		  shadow: {
+            elem: "input",
+            type: "text",
+            label: "TextShadow"
           }
         }
       },
 
       _setup: function( options ) {
-		
+
         var newdiv = document.createElement( "div" );
 
         newdiv.id = "caption-" + i++;
@@ -118,12 +127,14 @@
 		newdiv.style.position = "absolute";
 		newdiv.style.color = options.color;
 		newdiv.style.fontSize = options.size + "px";
+		newdiv.style.textShadow = options.shadow;
+        newdiv.style.fontWeight = options.weight;
 
 		newdiv.style.top = ( options.posy > this.position().height ) ? this.position().height + "px" : options.posy + "px";
 		newdiv.style.left = ( options.posx > this.position().width ) ? this.position().width + "px" : options.posx + "px";
 				
         // Creates a div for all captions to use
-        ( !this.container && ( !options.target || options.target === "caption-container" ) ) && 
+        ( !this.container && ( !options.target || options.target === "caption-container" ) ) &&
           createDefaultContainer( this );
 
         // if a target is specified, use that
@@ -133,7 +144,7 @@
           // use shared default container
           options.container = this.container;
         }
-		
+
         document.getElementById( options.container.id ) && document.getElementById( options.container.id ).appendChild( newdiv );
         options.innerContainer = newdiv;
 
@@ -153,8 +164,8 @@
       },
       /**
        * @member caption 
-       * The end function will be executed when the currentTime 
-       * of the video  reaches the end time provided by the 
+       * The end function will be executed when the currentTime
+       * of the video  reaches the end time provided by the
        * options variable
        */
       end: function( event, options ) {
@@ -165,7 +176,5 @@
       _teardown: function ( options ) {
         options.container.removeChild( options.innerContainer );
       }
-   
   });
-
 })( Popcorn );
