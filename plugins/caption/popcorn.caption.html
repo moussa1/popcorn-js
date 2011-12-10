@@ -1,62 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Popcorn Caption Plug-in Demo</title>
+  <head>
+    <title>Popcorn Caption Plug-in Demo</title>
 
-  <script src="../../popcorn.js"></script>
-  <script src="popcorn.caption.js"></script>
-  <script>
-    document.addEventListener( 'DOMContentLoaded', function () {
-      var p = Popcorn( '#video' )
-      .volume( 0 )
-      .play()
-      .caption({
-        start: 2, // seconds
-        end: 6, // seconds
-        text: 'this is caption #1',
-		color: 'red',
-		size: 10,
-		posx: 200,
-		posy: 30,
-		weight: 'bold',
-		shadow: 'black 2px 2px 6px'
-      })
-      .caption({
-        start: 7, // seconds
-        end: 14, // seconds
-        text: 'this is caption #2',
-		color: 'yellow',
-		size: 10,
-		posx: 30,
-		posy: 100,
-		weight: 'bolder',
-		shadow: 'red 2px 2px 6px'
-      })
-    }, false);
-  </script>
-</head>
-<body>
-  <h1 id="qunit-header">Popcorn Caption Plug-in Demo</h1>
-  <p> A caption displaying 'this is caption #1' will appear at 2 seconds and disappear at 6 seconds.</p>
-  <p> A caption displaying 'this is caption #2' will appear at 7 seconds and disappear at 14 seconds.</p>
-  <div>
+    <script src="../../popcorn.js"></script>
+    <script src="popcorn.caption.js"></script>
+    <script>
+      document.addEventListener( "DOMContentLoaded", function () {
+        var p = Popcorn( "#video" )
+        .volume( 0 )
+        .play()
+        .caption({
+          // seconds
+          start: 2,
+          // seconds
+          end: 6,
+          text: "this is caption #1",
+          color: "red",
+          size: 10,
+          posx: 200,
+          posy: 30,
+          weight: "bold",
+          shadow: "black 2px 2px 6px"
+        })
+        .caption({
+          // seconds
+          start: 7,
+          // seconds
+          end: 14,
+          text: "this is caption #2",
+          color: "yellow",
+          size: 10,
+          posx: 30,
+          posy: 100,
+          weight: "bolder",
+          shadow: "red 2px 2px 6px"
+        })
+      }, false);
+    </script>
+  </head>
 
-    <video id='video'
-      controls height="240" width="390"
-      poster="../../test/poster.png">
+  <body>
+    <h1 id="qunit-header">Popcorn Caption Plug-in Demo</h1>
+    <p> A caption displaying 'this is caption #1' will appear at 2 seconds and disappear at 6 seconds.</p>
+    <p> A caption displaying 'this is caption #2' will appear at 7 seconds and disappear at 14 seconds.</p>
+    <div>
+      <video id="video"
+        controls height="240" width="390"
+        poster="../../test/poster.png">
 
-      <source id='mp4'
-        src="../../test/trailer.mp4"
-        type='video/mp4; codecs="avc1, mp4a"'>
+        <source id="mp4"
+          src="../../test/trailer.mp4"
+          type='video/mp4; codecs="avc1, mp4a"'>
 
-      <source id='ogv'
-        src="../../test/trailer.ogv"
-        type='video/ogg; codecs="theora, vorbis"'>
+        <source id="ogv"
+          src="../../test/trailer.ogv"
+          type='video/ogg; codecs="theora, vorbis"'>
 
-      <p>Your user agent does not support the HTML5 Video element.</p>
+        <p>Your user agent does not support the HTML5 Video element.</p>
 
-    </video>
-  </div>
+      </video>
+    </div>
 
-</body>
+  </body>
 </html>
