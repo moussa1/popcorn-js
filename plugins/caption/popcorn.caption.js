@@ -51,8 +51,6 @@
           size:         "20",                // pixels, optional
           posx:         "0",                 // pixels, left
           posy:         "0",                 // pixels, top
-          shadow:       "black 2px 2px 6px", // optional
-          weight:       "bold",              // optional
           text:         "Hellow world",      // optional
           target:       "captiondiv",        // optional
         } )
@@ -104,16 +102,6 @@
           elem: "input",
           type: "text",
           label: "PositionY"
-        },
-         weight: {
-          elem: "input",
-          type: "text",
-          label: "FontWeight"
-        },
-        shadow: {
-          elem: "input",
-          type: "text",
-          label: "TextShadow"
         }
       }
     },
@@ -127,8 +115,6 @@
       newdiv.style.position = "absolute";
       newdiv.style.color = options.color;
       newdiv.style.fontSize = options.size + "px";
-      newdiv.style.textShadow = options.shadow;
-      newdiv.style.fontWeight = options.weight;
 
       newdiv.style.top = ( options.posy > this.position().height ) ? this.position().height + "px" : options.posy + "px";
       newdiv.style.left = ( options.posx > this.position().width ) ? this.position().width + "px" : options.posx + "px";
