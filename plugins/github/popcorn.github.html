@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popcorn Github Plug-in Demo</title>
+
+  <script src="../../popcorn.js"></script>
+  <script src="popcorn.github.js"></script>
+  <script>
+    document.addEventListener( "DOMContentLoaded", function () {
+      var p = Popcorn( "#video" )
+      .volume( 0 )
+      .play()
+      .github({
+        target: "githubdiv",
+        start: 3,
+        end: 6,
+        username: "moussa1",
+        repo: "popcorn-js"
+      })
+      .github({
+        target: "githubdiv2",
+        start: 3,
+        end: 6,
+        username: "moussa1",
+        repo: "mozilla-central"
+      })
+    }, false);
+  </script>
+</head>
+<body>
+<h1 id="qunit-header">Popcorn Github Plug-in Demo</h1>
+    <p> A github call to moussa1's popcorn-js github  will appear at 1 second and disappear at 15 seconds.</p>
+  <div>
+      <video id="video"
+        controls height="240" width="390"
+        poster="../../test/poster.png">
+
+        <source id="mp4"
+          src="../../test/trailer.mp4"
+          type='video/mp4; codecs="avc1, mp4a"'>
+
+        <source id="ogv"
+          src="../../test/trailer.ogv"
+          type='video/ogg; codecs="theora, vorbis"'>
+
+        <p>Your user agent does not support the HTML5 Video element.</p>
+
+      </video>
+  </div>
+
+  <div style="position:absolute;left:400px;top:150px">
+    <div id="githubdiv">
+      <span id="created_at">created date goes here</span><br/>
+      <span id="owner">owner info goes here</span><br/>
+      <span id="created_at">another created date to see if both spans get changed</span><br/>
+    </div>
+
+    <div id="githubdiv2">
+      <span id="name">second owner div</span>
+    </div>
+
+  </div>
+</body>
+</html>
